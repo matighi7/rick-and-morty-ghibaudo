@@ -1,0 +1,25 @@
+const axios = require('axios');
+
+
+const URL = 'https://rickandmortyapi.com/api/character/';
+
+const getCharById = async (req, res) => {
+  const charId = req.params.id;
+
+  try {
+    const response = await axios.get(`${URL}${charId}`);
+    const character = response.data;
+
+    if (character.error) {
+      return res.status(404).json({ message: 'Not found' });
+    }
+
+    const { id, status, name, species, origin, image, gender } = character;
+    const charData = { id, status, name, species, origin, image, gender };
+    res.json(charData);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = getCharById;
