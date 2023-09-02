@@ -2,19 +2,22 @@ import styles from "./Card.module.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch,} from "react-redux";
 import { addFav, removeFav } from "../redux/actions";
-
+import { useState } from "react";
 const Card = ({ characters, onClose }) => {
   const { id, name, status, species, gender, origin, image } = characters;
 
   const myFavorites = useSelector((state) => state.myFavorites);
   const dispatch = useDispatch();
 
-  const isFav = myFavorites.some((fav) => fav.id === characters.id);
+  //const isFav = myFavorites.some((fav) => fav.id === characters.id);
+  const [ isFav, setIsFav ] = useState(false);
 
   const handleFavorite = () => {
     if (isFav) {
+      setIsFav(false);
       dispatch(removeFav(id));
     } else {
+      setIsFav(true);
       dispatch(addFav(characters));
     }
   };

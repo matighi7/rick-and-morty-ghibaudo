@@ -6,9 +6,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align:center;
-   background-image:url('../img/rick and morthy.jpg'); 
-   background-repeat:repeat;
-   height:auto;
+  color:greenyellow;
+   background-image:url('../img/homeworkRAM.jpg'); 
+   background-size:contain;
+   height:max-content;
 }
 
 code {
